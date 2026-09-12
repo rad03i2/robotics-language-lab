@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Robot Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #10151f; color: #f4f7fb; }
+    main { max-width: 900px; margin: 0 auto; padding: 32px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+    .card { border: 1px solid #253044; border-radius: 16px; padding: 20px; background: #161d2b; }
+    .value { font-size: 2rem; font-weight: 700; }
+    button { padding: 10px 14px; border-radius: 10px; border: 0; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Robot Telemetry Dashboard</h1>
+    <p>Small browser dashboard for simulated robot telemetry.</p>
+    <div class="grid">
+      <section class="card"><h2>Battery</h2><div class="value" id="battery">--%</div></section>
+      <section class="card"><h2>Speed</h2><div class="value" id="speed">-- m/s</div></section>
+      <section class="card"><h2>Heading</h2><div class="value" id="heading">--°</div></section>
+      <section class="card"><h2>Status</h2><div class="value" id="status">idle</div></section>
+    </div>
+    <p><button id="tick">Generate telemetry</button></p>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
