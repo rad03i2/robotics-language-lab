@@ -1,0 +1,26 @@
+name: robotics-lab-checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lightweight-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python syntax check
+        run: python3 -m py_compile python/control/pid_controller.py python/sensors/imu_filter.py python/navigation/a_star.py
+
+      - name: C++ compile check
+        run: |
+          g++ -std=c++17 cpp/control/pid_controller.cpp -o /tmp/pid_controller
+          g++ -std=c++17 cpp/navigation/occupancy_grid.cpp -o /tmp/occupancy_grid
+
+      - name: C compile check
+        run: gcc c/embedded/ring_buffer.c -o /tmp/ring_buffer
+
+      - name: Repository summary
+        run: echo "Robotics Language Lab checks completed."
