@@ -1,0 +1,12 @@
+robotics_language_lab:
+  ros__parameters:
+    robot_name: mini_lab_bot
+    control_rate_hz: 50
+    wheel_radius_m: 0.035
+    wheel_base_m: 0.18
+    max_linear_speed_mps: 0.45
+    max_angular_speed_rps: 1.2
+    sensors:
+      ultrasonic_front: true
+      imu: true
+      wheel_encoders: true
