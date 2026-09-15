@@ -82,3 +82,8 @@ The project is intentionally small but broad. It is not claiming to be a complet
 4. **Robot description** using URDF-style structure.
 5. **Telemetry** between a robot and dashboard/server tools.
 6. **Developer tooling** for repeatable testing and simulation.
+
+## Official links
+
+- Portfolio: https://rdwan.dev
+- Project page: https://rdwan.dev/projects/02-robotics-language-lab.html
