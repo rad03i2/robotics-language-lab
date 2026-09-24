@@ -4,23 +4,43 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
-  lightweight-checks:
+  python:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.10", "3.12", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Syntax check
+        run: python -m compileall -q python tests
+      - name: Behavioral tests
+        run: python -m unittest discover -s tests -v
+
+  native:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Python syntax check
-        run: python3 -m py_compile python/control/pid_controller.py python/sensors/imu_filter.py python/navigation/a_star.py
-
-      - name: C++ compile check
+      - uses: actions/checkout@v4
+      - name: Compile C++ examples
         run: |
-          g++ -std=c++17 cpp/control/pid_controller.cpp -o /tmp/pid_controller
-          g++ -std=c++17 cpp/navigation/occupancy_grid.cpp -o /tmp/occupancy_grid
+          g++ -std=c++17 -Wall -Wextra -Wpedantic cpp/control/pid_controller.cpp -o /tmp/pid_controller
+          g++ -std=c++17 -Wall -Wextra -Wpedantic cpp/navigation/occupancy_grid.cpp -o /tmp/occupancy_grid
+      - name: Compile C example
+        run: gcc -std=c11 -Wall -Wextra -Wpedantic c/embedded/ring_buffer.c -o /tmp/ring_buffer
 
-      - name: C compile check
-        run: gcc c/embedded/ring_buffer.c -o /tmp/ring_buffer
-
-      - name: Repository summary
-        run: echo "Robotics Language Lab checks completed."
+  dotnet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - name: Build diagnostics example
+        run: dotnet build csharp/RobotDiagnostics/RobotDiagnostics.csproj --configuration Release
