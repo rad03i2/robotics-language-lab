@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+<title id="title">Robotics Language Lab logo</title>
+<desc id="desc">Robot head connected to a signal matrix representing multiple robotics languages and subsystems.</desc>
+<rect width="512" height="512" rx="112" fill="#101622"/>
+<path d="M256 92L128 170L154 344L256 416L358 344L384 170Z" fill="#151E2D" stroke="#2B3950" stroke-width="4"/>
+<path d="M256 92L154 344M256 92L358 344M128 170L384 170M154 344L384 170M358 344L128 170" stroke="#263247" stroke-width="5"/>
+<circle cx="256" cy="92" r="18" fill="#C8FF4D"/>
+<circle cx="128" cy="170" r="16" fill="#49D6FF"/>
+<circle cx="384" cy="170" r="16" fill="#F04FC2"/>
+<circle cx="154" cy="344" r="16" fill="#FF6B57"/>
+<circle cx="358" cy="344" r="16" fill="#49D6FF"/>
+<rect x="174" y="174" width="164" height="150" rx="38" fill="#F3F7FC"/>
+<rect x="204" y="214" width="104" height="66" rx="22" fill="#101622"/>
+<circle cx="236" cy="247" r="11" fill="#49D6FF"/>
+<circle cx="276" cy="247" r="11" fill="#FF6B57"/>
+<path d="M226 295h60M256 174v-30M242 144h28" stroke="#101622" stroke-width="12" stroke-linecap="round"/>
+<path d="M166 248h-27M346 248h27" stroke="#C8FF4D" stroke-width="12" stroke-linecap="round"/>
+</svg>

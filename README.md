@@ -1,187 +1,230 @@
+<div align="center">
+
+<img src="assets/project-cover.svg" alt="Robotics Language Lab — multi-language robotics workbench" width="100%" />
+
+<br/>
+
+<img src="assets/project-logo.svg" alt="Robotics Language Lab logo" width="104" />
+
 # Robotics Language Lab
 
-A practical, multi-language robotics learning laboratory with runnable examples for control, navigation, embedded programming, telemetry, robot description, diagnostics, and developer tooling.
+**A multi-language robotics workbench for control, navigation, embedded systems, robot description, telemetry, diagnostics, and developer tooling.**
 
-The repository deliberately favors small, inspectable programs over a pretend monolithic robot stack. Each example can be studied independently, while the folders demonstrate how common robotics concerns map across languages and runtimes.
+<div dir="rtl">
+<strong>مختبر روبوتات عملي متعدد اللغات يربط الحساسات والتحكم والملاحة والأنظمة المضمنة وROS 2 والقياس عن بُعد.</strong>
+</div>
 
-## English
+<br/>
 
-### Why this project exists
-Robotics developers routinely cross boundaries between firmware, control code, desktop tooling, telemetry, simulation, and web interfaces. Robotics Language Lab provides a compact reference where those boundaries are visible without requiring a large framework just to explore an algorithm.
+[![CI](https://github.com/rad03i2/robotics-language-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/rad03i2/robotics-language-lab/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/Python-examples-49D6FF?logo=python&logoColor=101622)
+![C++](https://img.shields.io/badge/C%2B%2B-control%20%26%20navigation-C8FF4D?logo=cplusplus&logoColor=101622)
+![ROS 2](https://img.shields.io/badge/ROS%202-structure-F04FC2?logo=ros&logoColor=white)
+![Embedded](https://img.shields.io/badge/embedded-Arduino%20%7C%20C%20%7C%20MicroPython-FF6B57)
+![License](https://img.shields.io/badge/license-MIT-AAB7CC)
 
-### Key features
-- PID control examples and sensor-processing utilities.
-- Grid/navigation examples, including A* path planning and occupancy-grid code.
-- Arduino, embedded C, MicroPython, C++, Rust, Java, MATLAB/Octave, C#, Go, JavaScript and TypeScript examples.
-- ROS 2-style configuration and robot-description assets for studying package structure.
-- A lightweight Go telemetry service and browser dashboard example.
-- Automated checks for Python, C and C++ plus Python behavioral tests.
-- No API keys, cloud account, secrets, or paid services required.
+**[العربية](README_AR.md) · [English](README_EN.md) · [Architecture](docs/ARCHITECTURE.md) · [Roadmap](docs/ROADMAP.md) · [Safety](SECURITY.md)**
 
-### Preview guidance
-This is primarily a code laboratory rather than a single GUI application. For a visual preview, run the Go telemetry server and open `javascript/dashboard/index.html`; for terminal previews, run the Python PID/A* examples or C# diagnostics command below. Hardware-oriented examples should be reviewed and adapted to your board and wiring before use.
+</div>
 
-### Requirements
-You only need the toolchain for the example you want to run. Recommended baseline:
-- Python 3.10+
-- Go 1.22+ for the telemetry server
-- .NET 8 SDK for C# diagnostics
-- GCC/G++ with C++17 support for native examples
-- A modern browser for the dashboard
+---
 
-Arduino, MicroPython, Rust, Java, MATLAB/Octave and ROS 2 are optional and only needed for their respective folders.
+## One lab, many robotics layers
 
-### Installation
+Robotics Language Lab is intentionally a collection of small, inspectable programs rather than a pretend monolithic robot stack. Each folder demonstrates where a language or runtime can fit in a robotics workflow.
+
+<table>
+<tr>
+<td width="25%"><strong>Sense</strong><br/><sub>IMU filtering, ultrasonic input, ring buffers and hardware-facing examples.</sub></td>
+<td width="25%"><strong>Think</strong><br/><sub>PID control, A* planning, occupancy grids and path utilities.</sub></td>
+<td width="25%"><strong>Describe</strong><br/><sub>ROS 2-style configuration, launch structure and a small URDF robot model.</sub></td>
+<td width="25%"><strong>Observe</strong><br/><sub>Telemetry examples, diagnostics and a browser dashboard.</sub></td>
+</tr>
+</table>
+
+> This repository is educational. It is not a safety-certified robot-control platform and should not be used as the sole controller for safety-critical machinery.
+
+## Explore the lab
+
+| Area | Examples | Role |
+|---|---|---|
+| Control | `python/control/`, `cpp/control/` | PID and control-loop concepts |
+| Navigation | `python/navigation/`, `cpp/navigation/`, `java/planner/` | A*, occupancy grids and simple planning |
+| Sensors | `python/sensors/`, `micropython/` | IMU filtering and ultrasonic sensing |
+| Firmware | `arduino/`, `c/` | Line following and embedded data structures |
+| Robot model | `ros2/urdf/` | Small differential-drive robot description |
+| ROS-style config | `ros2/config/`, `ros2/launch/` | Parameters and launch structure |
+| Kinematics | `rust/kinematics/` | Differential-drive wheel velocity example |
+| Telemetry | `go/telemetry-server/`, `typescript/telemetry/` | Simulated robot state formats and transport examples |
+| Dashboard | `javascript/dashboard/` | Standalone browser telemetry simulation |
+| Diagnostics | `csharp/RobotDiagnostics/` | Robot health CLI example |
+| Tooling | `docker/`, `shell/` | Development container and helper script |
+| Numeric work | `matlab/` | Path smoothing example |
+
+## Start in 30 seconds
+
+Clone once, then run only the toolchain you want to explore:
+
 ```bash
 git clone https://github.com/rad03i2/robotics-language-lab.git
 cd robotics-language-lab
 ```
 
-There is intentionally no repository-wide dependency installation: examples use their native toolchains and are kept independent.
+### Python control
 
-### Usage
-Python PID controller:
 ```bash
 python python/control/pid_controller.py
 ```
 
-A* navigation:
+### A* navigation
+
 ```bash
 python python/navigation/a_star.py
 ```
 
-Go telemetry service:
+### Go telemetry endpoint
+
 ```bash
 go run go/telemetry-server/main.go
 ```
 
-C# diagnostics:
+The Go example exposes simulated JSON telemetry at `http://localhost:8080/telemetry`.
+
+### Browser telemetry demo
+
+Open:
+
+```text
+javascript/dashboard/index.html
+```
+
+The current browser dashboard is a **standalone simulated telemetry demo**; it generates its own sample state in JavaScript and does not currently consume the Go endpoint.
+
+### C# diagnostics
+
 ```bash
 dotnet run --project csharp/RobotDiagnostics
 ```
 
-Browser dashboard on Windows:
-```powershell
-start javascript/dashboard/index.html
-```
-On Linux/macOS, open that HTML file with your browser or a local static-file server.
+## A robotics data-flow view
 
-### Configuration
-Most examples expose constants close to the top of their source file so the relationship between configuration and behavior stays visible. Hardware pin assignments, ROS parameters, control gains, network addresses, and sensor assumptions must be reviewed before adapting an example to real hardware. Do not copy actuator limits or pin mappings blindly.
-
-### Project structure
 ```text
-arduino/                 Arduino firmware examples
-c/                       Embedded C utilities
-cpp/                     C++ control and navigation
-csharp/                   Robot diagnostics CLI
-docker/                   Lightweight development container
-docs/                     Architecture and optional roadmap
-go/                       Telemetry service
-java/                     Planning example
-javascript/               Browser dashboard
-matlab/                   Path smoothing
-micropython/              Sensor example
-python/                   Control, sensors and navigation
-ros2/                     ROS 2-style package/configuration examples
-rust/                     Kinematics example
-shell/                    Development/simulation helpers
-tests/                    Behavioral tests
-typescript/               Typed telemetry example
+Sensors / Firmware
+      │
+      ▼
+Filtering / State
+      │
+      ├──────────────► Telemetry / Diagnostics
+      ▼
+Control
+      │
+      ▼
+Navigation / Motion decisions
+      │
+      ▼
+Robot model + hardware assumptions
 ```
 
-### Testing
+The repository keeps these layers deliberately separate so that each example remains small enough to inspect.
+
+## Toolchains
+
+There is no repository-wide dependency installer. Use only the toolchain needed for the example you choose.
+
+Recommended baseline for the most directly runnable examples:
+
+- Python 3.10+
+- GCC/G++ with C++17 support
+- .NET 8 SDK
+- Go 1.22+
+- a modern browser
+
+Arduino tooling, MicroPython, Rust, Java, MATLAB/Octave, ROS 2 and TypeScript tooling are optional for their respective folders.
+
+## Testing and CI
+
 Run the Python behavioral suite:
+
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-GitHub Actions also performs Python syntax checks and compiles the checked C/C++ examples. Because this is a multi-toolchain lab, CI does not claim to emulate physical Arduino/MicroPython hardware or a complete ROS installation.
+GitHub Actions currently verifies:
 
-### Security and privacy
-The repository does not require credentials and its examples do not intentionally collect personal data. Network examples are development references, not hardened internet-facing services. Bind experimental services to trusted interfaces, never commit camera/robot credentials, and apply authentication/TLS before exposing adapted services outside a local lab. See `SECURITY.md`.
+- Python syntax and behavioral tests on Python 3.10, 3.12 and 3.13 across Ubuntu, Windows and macOS;
+- compilation of the checked C and C++ examples;
+- a .NET 8 build of the C# diagnostics example.
 
-### Limitations
-- This is a learning/reference repository, not a certified robot-control stack.
-- Hardware examples require board-specific pin, voltage, timing, and safety review.
-- ROS assets illustrate structure and are not a complete deployable robot package.
-- Telemetry/dashboard examples are intentionally lightweight and do not provide authentication, persistence, or fleet management.
-- CI validates a useful subset of examples; it cannot validate physical sensors, motors, timing, or every optional toolchain.
+CI does not emulate physical Arduino/MicroPython hardware or claim full ROS 2 integration testing.
 
-### Optional roadmap
-Future work may add hardware-in-the-loop examples, richer telemetry schemas, and additional tests for optional language toolchains. These are enhancements, not promises required for the current examples to run.
+## Hardware safety
 
-### Contributing
-Small, runnable examples with clear assumptions are welcome. Keep examples focused, avoid secrets/generated artifacts, and document any new toolchain requirement. See `CONTRIBUTING.md`.
+Before adapting any example to physical hardware:
 
-### License
-MIT License. See `LICENSE`.
+- verify voltage levels and board pin mappings;
+- validate current and actuator limits;
+- isolate or disable motors during early tests;
+- add emergency-stop behavior appropriate to the hardware;
+- review timing assumptions and mechanical clearances;
+- never copy demo gains or pin assignments blindly.
 
-### Author
-**Radwan Abdulhadi Ahmed**  
-**رضوان عبدالهادي أحمد**  
-GitHub: **@rad03i2**
+See [SECURITY.md](SECURITY.md) for the full safety guidance.
+
+## Current boundaries
+
+- The ROS 2 folder demonstrates package/configuration structure; it is not a complete production robot stack.
+- The dashboard is a lightweight local demo with no authentication, persistence, or fleet management.
+- The Go endpoint is a development example, not a hardened internet-facing service.
+- Physical sensors, motors and timing cannot be validated by repository CI.
+- Examples are deliberately small and may require adaptation before integration into a real robot.
+
+## Repository map
+
+```text
+robotics-language-lab/
+├── assets/              visual identity
+├── arduino/             line-following firmware example
+├── c/                   embedded ring buffer
+├── cpp/                 control + occupancy grid
+├── csharp/              diagnostics CLI
+├── docker/              development container
+├── docs/                architecture, brand and roadmap
+├── go/                  telemetry HTTP example
+├── java/                planner example
+├── javascript/          standalone browser dashboard
+├── matlab/              path smoothing
+├── micropython/         ultrasonic sensor example
+├── python/              control, navigation and sensors
+├── ros2/                config, launch and URDF examples
+├── rust/                differential-drive kinematics
+├── shell/               helper script
+├── tests/               Python behavioral tests
+└── typescript/          typed telemetry example
+```
+
+## Project documents
+
+| Resource | Purpose |
+|---|---|
+| [README_AR.md](README_AR.md) | الدليل العربي |
+| [README_EN.md](README_EN.md) | Full English guide |
+| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Robotics layers and data flow |
+| [docs/BRAND.md](docs/BRAND.md) | Signal Matrix visual identity |
+| [docs/ROADMAP.md](docs/ROADMAP.md) | Optional future directions |
+| [SECURITY.md](SECURITY.md) | Robotics and network safety |
+| [SUPPORT.md](SUPPORT.md) | Troubleshooting and support |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution rules |
+| [CHANGELOG.md](CHANGELOG.md) | Notable repository changes |
+| [LICENSE](LICENSE) | MIT License |
 
 ---
 
-## العربية
+<div align="center">
 
-### نظرة عامة
-**Robotics Language Lab** مختبر تعليمي عملي متعدد اللغات للروبوتات، يجمع أمثلة قابلة للتشغيل للتحكم والملاحة والبرمجة المضمنة والقياس عن بعد ووصف الروبوت والتشخيص وأدوات التطوير. الهدف هو تقديم أمثلة صغيرة وواضحة يمكن فهمها واختبارها منفردة بدل الادعاء بأنه نظام روبوتات إنتاجي متكامل.
+### Built by رضوان عبدالهادي
 
-### لماذا يوجد المشروع؟
-مشاريع الروبوتات الحقيقية تجمع عادةً بين برمجيات المتحكمات، خوارزميات التحكم، أدوات سطح المكتب، الاتصالات، المحاكاة والواجهات. يوفر هذا المستودع مرجعًا منظمًا يوضح هذه الحدود بلغات مختلفة من دون فرض إطار ضخم على المتعلم.
+**Radwan Abd alhady Ahmed · [@rad03i2](https://github.com/rad03i2)**
 
-### أهم الميزات
-- أمثلة PID وأدوات معالجة بيانات الحساسات.
-- أمثلة للملاحة والشبكات، ومنها تخطيط المسار A* وخرائط الإشغال.
-- أمثلة Arduino وC وMicroPython وC++ وRust وJava وMATLAB/Octave وC# وGo وJavaScript وTypeScript.
-- ملفات بأسلوب ROS 2 ووصف روبوت لدراسة بنية الحزم.
-- خدمة Go خفيفة للقياس عن بعد ولوحة متصفح تجريبية.
-- اختبارات سلوكية لبايثون وفحوص آلية لبناء أمثلة C/C++.
-- لا يحتاج مفاتيح API أو حسابًا سحابيًا أو أسرارًا.
+<sub>Small examples. Clear assumptions. Real robotics concepts.</sub>
 
-### المعاينة
-المشروع مختبر أكواد أكثر من كونه تطبيق واجهة واحدة. للمعاينة المرئية شغّل خدمة Go وافتح `javascript/dashboard/index.html`. ويمكن تشغيل أمثلة PID وA* أو أداة C# لمعاينة النتائج في الطرفية. أمثلة العتاد يجب تكييفها مع اللوحة والتوصيلات قبل استخدامها فعليًا.
-
-### المتطلبات والتثبيت
-تحتاج فقط إلى بيئة اللغة الخاصة بالمثال المطلوب. يوصى بـ Python 3.10+ وGo 1.22+ و.NET 8 وGCC/G++ مع C++17 ومتصفح حديث. الأدوات الأخرى مثل Arduino وROS 2 وRust اختيارية بحسب المجلد.
-
-```bash
-git clone https://github.com/rad03i2/robotics-language-lab.git
-cd robotics-language-lab
-python python/control/pid_controller.py
-python python/navigation/a_star.py
-```
-
-لا توجد عملية تثبيت موحدة للمستودع؛ فصل الأدوات مقصود حتى تبقى الأمثلة مستقلة وبسيطة.
-
-### الإعداد
-راجع الثوابت الموجودة في ملفات الأمثلة قبل التشغيل على عتاد حقيقي، خصوصًا أرجل التوصيل وحدود المحركات ومعاملات التحكم وعناوين الشبكة وافتراضات الحساسات. لا تنقل قيم العتاد إلى روبوت حقيقي من دون مراجعة هندسية مناسبة.
-
-### بنية المشروع
-المجلدات مقسمة حسب اللغة أو المجال: `python/` للتحكم والحساسات والملاحة، `cpp/` للتحكم والملاحة، `arduino/` للبرمجيات المضمنة، `ros2/` لملفات ROS، `go/` للقياس عن بعد، `javascript/` للوحة المتصفح، و`tests/` للاختبارات السلوكية، مع مجلدات اللغات الأخرى الموضحة في القسم الإنجليزي.
-
-### الاختبارات
-```bash
-python -m unittest discover -s tests -v
-```
-
-تقوم GitHub Actions أيضًا بفحص صياغة Python وبناء أمثلة C وC++. هذه الفحوص لا تحاكي العتاد الحقيقي ولا تدعي اختبار جميع بيئات ROS أو المتحكمات.
-
-### الأمان والخصوصية
-لا يحتاج المشروع بيانات اعتماد ولا يجمع بيانات شخصية عمدًا. أمثلة الشبكة مخصصة للتعلم وليست خدمات جاهزة للإنترنت العام. استخدم شبكات موثوقة وأضف المصادقة وTLS عند تحويل أي مثال إلى خدمة فعلية، ولا ترفع بيانات دخول الكاميرات أو الروبوتات إلى المستودع. راجع `SECURITY.md`.
-
-### القيود
-المشروع ليس نظام تحكم معتمدًا للسلامة، وأمثلة العتاد تحتاج مراجعة للجهد والأرجل والتوقيت والحدود الميكانيكية. ملفات ROS توضيحية وليست حزمة روبوت مكتملة، ولوحة القياس لا توفر مصادقة أو تخزينًا دائمًا أو إدارة أسطول. كما أن CI لا يستطيع اختبار الحساسات والمحركات الفعلية.
-
-### التطوير الاختياري
-يمكن مستقبلًا إضافة اختبارات hardware-in-the-loop ومخططات telemetry أغنى واختبارات للغات الاختيارية. هذه تحسينات اختيارية وليست ميزات مزعومة حاليًا.
-
-### المساهمة والترخيص
-المساهمات التي تضيف أمثلة صغيرة قابلة للتشغيل وموثقة مرحب بها؛ راجع `CONTRIBUTING.md`. المشروع مرخص وفق MIT، والتفاصيل في `LICENSE`.
-
-### المؤلف
-**Radwan Abdulhadi Ahmed**  
-**رضوان عبدالهادي أحمد**  
-GitHub: **@rad03i2**
+</div>

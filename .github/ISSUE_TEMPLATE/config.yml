@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Safety and security guidance
+    url: https://github.com/rad03i2/robotics-language-lab/blob/main/SECURITY.md
+    about: Read this before reporting security-sensitive or hardware-safety issues.
+  - name: Support guide
+    url: https://github.com/rad03i2/robotics-language-lab/blob/main/SUPPORT.md
+    about: Toolchain, dashboard, ROS and hardware troubleshooting guidance.

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="800" viewBox="0 0 1600 800" role="img" aria-labelledby="title desc">
+<title id="title">Robotics Language Lab — Signal Matrix</title>
+<desc id="desc">A robotics instrumentation identity connecting control, navigation, embedded systems, telemetry and multiple programming languages.</desc>
+<defs>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#263247" stroke-width="1"/></pattern>
+  <filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1600" height="800" rx="36" fill="#101622"/>
+<rect width="1600" height="800" rx="36" fill="url(#grid)" opacity=".58"/>
+<circle cx="1378" cy="114" r="250" fill="#18243A"/>
+<circle cx="1470" cy="50" r="105" fill="#49D6FF" opacity=".06"/>
+
+<g transform="translate(86 74)">
+  <rect width="116" height="116" rx="28" fill="#C8FF4D"/>
+  <rect x="25" y="31" width="66" height="56" rx="16" fill="#101622"/>
+  <circle cx="47" cy="58" r="7" fill="#49D6FF"/>
+  <circle cx="70" cy="58" r="7" fill="#FF6B57"/>
+  <path d="M42 78h34M58 31V18M49 18h18" stroke="#F3F7FC" stroke-width="7" stroke-linecap="round"/>
+  <path d="M18 60H8M108 60H98" stroke="#101622" stroke-width="7" stroke-linecap="round"/>
+</g>
+
+<text x="88" y="282" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="8" fill="#49D6FF">MULTI-LANGUAGE ROBOTICS WORKBENCH</text>
+<text x="84" y="382" font-family="Arial, Helvetica, sans-serif" font-size="84" font-weight="900" letter-spacing="-3" fill="#F3F7FC">Robotics</text>
+<text x="84" y="470" font-family="Arial, Helvetica, sans-serif" font-size="84" font-weight="900" letter-spacing="-3" fill="#C8FF4D">Language Lab</text>
+<text x="90" y="526" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="600" fill="#AAB7CC">Control · Navigation · Embedded · ROS 2 · Telemetry · Diagnostics</text>
+<text x="90" y="575" direction="rtl" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" fill="#F3F7FC">مختبر روبوتات متعدد اللغات من الحساسات إلى الملاحة والقياس عن بُعد</text>
+
+<g transform="translate(90 624)">
+  <rect width="132" height="42" rx="21" fill="#C8FF4D"/><text x="66" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#101622">CONTROL</text>
+  <rect x="146" width="150" height="42" rx="21" fill="#49D6FF"/><text x="221" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#101622">NAVIGATION</text>
+  <rect x="310" width="142" height="42" rx="21" fill="#FF6B57"/><text x="381" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#101622">EMBEDDED</text>
+  <rect x="466" width="146" height="42" rx="21" fill="#F04FC2"/><text x="539" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#101622">TELEMETRY</text>
+</g>
+
+<g transform="translate(1010 115)">
+  <path d="M250 95L115 190L160 385L345 385L390 190Z" fill="#151E2D" stroke="#34445E" stroke-width="2"/>
+  <path d="M250 95L160 385M250 95L345 385M115 190L390 190M160 385L390 190M345 385L115 190" stroke="#263247" stroke-width="3"/>
+  <circle cx="250" cy="95" r="18" fill="#C8FF4D" filter="url(#glow)"/>
+  <circle cx="115" cy="190" r="15" fill="#49D6FF"/>
+  <circle cx="390" cy="190" r="15" fill="#F04FC2"/>
+  <circle cx="160" cy="385" r="15" fill="#FF6B57"/>
+  <circle cx="345" cy="385" r="15" fill="#49D6FF"/>
+
+  <g transform="translate(182 178)">
+    <rect width="136" height="126" rx="28" fill="#F3F7FC"/>
+    <rect x="24" y="36" width="88" height="55" rx="17" fill="#101622"/>
+    <circle cx="52" cy="63" r="8" fill="#49D6FF"/>
+    <circle cx="84" cy="63" r="8" fill="#FF6B57"/>
+    <path d="M46 82h44M68 36V18M56 18h24" stroke="#101622" stroke-width="8" stroke-linecap="round"/>
+    <path d="M18 64H0M136 64h18" stroke="#C8FF4D" stroke-width="9" stroke-linecap="round"/>
+  </g>
+
+  <text x="250" y="58" text-anchor="middle" font-family="Consolas, monospace" font-size="16" font-weight="700" fill="#C8FF4D">PID / A*</text>
+  <text x="62" y="182" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="700" fill="#49D6FF">SENSORS</text>
+  <text x="442" y="182" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="700" fill="#F04FC2">ROS 2</text>
+  <text x="118" y="427" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="700" fill="#FF6B57">FIRMWARE</text>
+  <text x="390" y="427" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="700" fill="#49D6FF">TELEMETRY</text>
+
+  <g font-family="Consolas, monospace" font-size="14" fill="#AAB7CC">
+    <text x="66" y="486">Python</text><text x="140" y="486">C++</text><text x="196" y="486">Rust</text>
+    <text x="246" y="486">Go</text><text x="286" y="486">C#</text><text x="330" y="486">JS/TS</text><text x="390" y="486">Arduino</text>
+  </g>
+</g>
+
+<text x="90" y="738" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#F3F7FC">رضوان عبدالهادي · Radwan Abd alhady Ahmed</text>
+<text x="1510" y="738" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" letter-spacing="4" fill="#78869C">A RADWAN ABD ALHADY PROJECT</text>
+</svg>

@@ -1,0 +1,50 @@
+name: Bug report
+description: Report a reproducible Robotics Language Lab problem
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Remove credentials, private device URLs and personal telemetry before submitting. For motor/hardware issues, reproduce with movement isolated when possible.
+  - type: input
+    id: path
+    attributes:
+      label: Repository path
+      placeholder: "Example: python/navigation/a_star.py"
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Runtime / toolchain version
+      placeholder: "Example: Python 3.12, GCC 14, .NET 8"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options: [Windows, macOS, Linux, Embedded board / device, Other]
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Provide sanitized commands and steps.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
